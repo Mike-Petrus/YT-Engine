@@ -1,5 +1,7 @@
 #include "Engine.h"
 #include "../Graphics/TextureManager.h"
+#include "../Physics/Vector2D.h"
+#include "../Physics/Transform.h"
 
 Engine* Engine::s_Instance = nullptr;
 
@@ -23,11 +25,12 @@ bool Engine::Init(){
     }
 
     TextureManager::GetInstance()->Load("tree", "assets/tree.png");
+
     return m_IsRunning = true;
 }
 
 void Engine::Update(){
-    SDL_Log("Updating...");
+    
 }
 
 void Engine::Render(){
