@@ -1,9 +1,9 @@
 #include "Engine.h"
 #include "../Graphics/TextureManager.h"
-#include "../Physics/Vector2D.h"
-#include "../Physics/Transform.h"
+#include "../Characters/Warrior.h"
 
 Engine* Engine::s_Instance = nullptr;
+Warrior* player = nullptr;
 
 bool Engine::Init(){
 
@@ -24,20 +24,21 @@ bool Engine::Init(){
         return false;
     }
 
-    TextureManager::GetInstance()->Load("tree", "assets/tree.png");
+    TextureManager::GetInstance()->Load("player", "assets/Idle.png");
+    player = new Warrior(new Properties("player", 100, 200, 136, 96));
 
     return m_IsRunning = true;
 }
 
 void Engine::Update(){
-    
+    player->Update(0);
 }
 
 void Engine::Render(){
     SDL_SetRenderDrawColor(m_Renderer, 125, 218, 254, 255);
     SDL_RenderClear(m_Renderer);
 
-    TextureManager::GetInstance()->Draw("tree", 100, 100, 347, 465);
+    player->Draw();
     SDL_RenderPresent(m_Renderer);
 }
 
