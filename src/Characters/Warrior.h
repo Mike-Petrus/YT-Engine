@@ -3,7 +3,7 @@
 
 #include "Character.h"
 #include "../Animation/Animation.h"
-#include "../Physics/RigitBody.h"
+#include "../Physics/RigidBody.h"
 
 class Warrior : public Character{
     public:
