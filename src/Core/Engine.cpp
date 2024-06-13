@@ -26,15 +26,14 @@ bool Engine::Init(){
     }
 
     TextureManager::GetInstance()->Load("player", "assets/Idle.png");
+    TextureManager::GetInstance()->Load("player_run", "assets/Run.png");
+
     player = new Warrior(new Properties("player", 100, 200, 136, 96));
 
     return m_IsRunning = true;
 }
 
 void Engine::Update(){
-    if(Input::GetInstance()->GetKeyDown(SDL_SCANCODE_A)){
-        SDL_Log("Key A pushed!");
-    }
     player->Update(0);
 }
 
