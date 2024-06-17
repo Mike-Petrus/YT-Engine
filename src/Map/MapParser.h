@@ -16,12 +16,12 @@ class MapParser{
         bool Load();
         void Clean();
 
-        inline GameMap* GetMaps();
+        inline GameMap* GetMaps(std::string id){return m_MapDict[id];}
 
     private:
         bool Parse(std::string id, std::string source);
         Tileset ParseTileset(TiXmlElement* xmlTileset);
-        TileLayer* ParseTileLayer(TiXmlElement* xmlLayer);
+        TileLayer* ParseTileLayer(TiXmlElement* xmlLayer, TilesetList tilesets, int tilesize, int rowcount, int colcount);
 
     private:
         MapParser(){}
