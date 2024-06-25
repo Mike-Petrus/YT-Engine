@@ -3,6 +3,7 @@
 #include "../Characters/Warrior.h"
 #include "../Inputs/Input.h"
 #include "../Timer/Timer.h"
+#include "../Map/MapParser.h"
 
 Engine* Engine::s_Instance = nullptr;
 Warrior* player = nullptr;
@@ -26,6 +27,12 @@ bool Engine::Init(){
         return false;
     }
 
+    if (MapParser::GetInstance()->Load()){
+        SDL_Log("Failed to load map");
+    }
+
+    m_LevelMap = MapParser::GetInstance()->GetMap("MAP");
+
     TextureManager::GetInstance()->Load("player", "assets/Idle.png");
     TextureManager::GetInstance()->Load("player_run", "assets/Run.png");
 
@@ -36,6 +43,7 @@ bool Engine::Init(){
 
 void Engine::Update(){
     float dt = Timer::GetInstance()->GetDeltaTime();
+    m_LevelMap->Update();
     player->Update(dt);
 }
 
@@ -43,6 +51,7 @@ void Engine::Render(){
     SDL_SetRenderDrawColor(m_Renderer, 125, 218, 254, 255);
     SDL_RenderClear(m_Renderer);
 
+    m_LevelMap->Render();
     player->Draw();
     SDL_RenderPresent(m_Renderer);
 }
