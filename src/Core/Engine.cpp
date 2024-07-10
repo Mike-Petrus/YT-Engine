@@ -27,7 +27,7 @@ bool Engine::Init(){
         return false;
     }
 
-    if (MapParser::GetInstance()->Load()){
+    if (!MapParser::GetInstance()->Load()){
         SDL_Log("Failed to load map");
     }
 
