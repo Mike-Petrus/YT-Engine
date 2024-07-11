@@ -4,6 +4,7 @@
 #include "../Inputs/Input.h"
 #include "../Timer/Timer.h"
 #include "../Map/MapParser.h"
+#include "../Camera/Camera.h"
 
 Engine* Engine::s_Instance = nullptr;
 Warrior* player = nullptr;
@@ -38,6 +39,8 @@ bool Engine::Init(){
 
     player = new Warrior(new Properties("player", 100, 200, 136, 96));
 
+    Camera::GetInstance()->SetTarget(player->GetOrigin());
+
     return m_IsRunning = true;
 }
 
@@ -45,6 +48,7 @@ void Engine::Update(){
     float dt = Timer::GetInstance()->GetDeltaTime();
     m_LevelMap->Update();
     player->Update(dt);
+    Camera::GetInstance()->Update(dt);
 }
 
 void Engine::Render(){
