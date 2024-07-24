@@ -5,6 +5,7 @@
 #include "../Timer/Timer.h"
 #include "../Map/MapParser.h"
 #include "../Camera/Camera.h"
+#include "../Collision/CollisionHandler.h"
 
 Engine* Engine::s_Instance = nullptr;
 Warrior* player = nullptr;

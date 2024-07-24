@@ -1,6 +1,7 @@
 #OBJS specifies which files to compile as part of the project
 OBJS = main.cpp src/Core/Engine.cpp src/Graphics/TextureManager.cpp src/Characters/Warrior.cpp src/Animation/Animation.cpp \
-src/Inputs/Input.cpp src/Timer/Timer.cpp src/Map/TileLayer.cpp src/Map/MapParser.cpp src/Camera/Camera.cpp\
+src/Inputs/Input.cpp src/Timer/Timer.cpp src/Map/TileLayer.cpp src/Map/MapParser.cpp src/Camera/Camera.cpp \
+src/Collision/CollisionHandler.cpp \
 src/Vendor/TinyXML/tinyxml.cpp src/Vendor/TinyXML/tinyxmlparser.cpp src/Vendor/TinyXML/tinyxmlerror.cpp src/Vendor/TinyXML/tinystr.cpp 
 
 #CC specifies which compiler we're using
